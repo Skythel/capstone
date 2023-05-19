@@ -1,41 +1,42 @@
+import { Link } from 'react-router-dom';
 const links = [
     {
         text: "Home",
-        href: "./"
+        href: "/"
     },
     {
         text: "About",
-        href: "./about"
+        href: "/about"
     },
     {
         text: "Menu",
-        href: "./menu"
+        href: "/menu"
     },
     {
         text: "Reservations",
-        href: "./reservations"
+        href: "/reservations"
     },
     {
         text: "Order Online",
-        href: "./order"
+        href: "/order"
     },
     {
         text: "Login",
-        href: "./login"
+        href: "/login"
     },
 ]
 
 const Nav = () => {
     return (
-        <nav>
-            <ul>
-            {
-                links.map((link) => {
-                    <li><a href={link.href}>{link.text}</a></li>
-                })
-            }
-            </ul>
-        </nav>
+        <>
+            <nav>
+                <ul>
+                {links.map((link) =>
+                    <li key={link.text}><Link to={link.href}>{link.text}</Link></li>
+                )}
+                </ul>
+            </nav>
+        </>
     );
-}
+};
 export default Nav;

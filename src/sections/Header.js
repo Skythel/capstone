@@ -1,6 +1,9 @@
+import Logo from "../Logo.svg";
 const Header = () => {
     return (
-        <img src="../Logo.svg"/>
+        <header>
+            <img src={Logo} alt="Logo" />
+        </header>
     );
-}
+};
 export default Header;
