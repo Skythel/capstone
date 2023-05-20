@@ -43,7 +43,7 @@ const BookingForm = (props) => {
                 </FormControl>
                 <FormControl isInvalid={formik.errors.time && formik.touched.time}>
                     <FormLabel htmlFor="res-time">Choose time</FormLabel>
-                    <Select id="res-time" name="res-time" {...formik.getFieldProps("time")}>
+                    <Select icon="" variant='filled' id="res-time" name="res-time" {...formik.getFieldProps("time")}>
                         {props.availableTimes.map((time) => 
                             <option key={time}>{time}</option>
                         )}
@@ -57,7 +57,7 @@ const BookingForm = (props) => {
                 </FormControl>
                 <FormControl isInvalid={formik.errors.occasion && formik.touched.occasion}>
                     <FormLabel htmlFor="occasion">Occasion</FormLabel>
-                    <Select id="occasion" name="occasion" {...formik.getFieldProps("occasion")}>
+                    <Select icon="" variant='filled' id="occasion" name="occasion" {...formik.getFieldProps("occasion")}>
                         <option>Choose one</option>
                         <option>Birthday</option>
                         <option>Anniversary</option>

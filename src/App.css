@@ -5,17 +5,37 @@ body {
 main {
   display: flex;
 }
-nav {
+nav, .imagecontain {
   padding: 0.5rem;
   text-align: center;
+  margin: auto;
 }
-ul li {
+ul li, button {
   display: inline-block;
   padding: 0.5rem;
   background: #f4ce14;
-  margin: 0.5rem;
+  margin: 0.2rem;
+  transition: 0.5s;
+  border-radius: 0.5rem;
+  border: none;
 }
-h1, h2, h3, h4, h5, h6, p, span {
+button {
+  margin-top: 1rem;
+  font-family: "Karla", sans-serif;
+}
+ul a {
+  text-decoration: none;
+  color: #495e57;
+}
+ul li:hover, button:hover {
+  box-shadow: inset 0 0 0.5rem black;
+  cursor: hand;
+  cursor: pointer;
+}
+ul li:active, button:active {
+  background: #d8b60d;
+}
+h1, h2, h3, h4, h5, h6 {
   font-family: "Markazi Text", serif;
   text-align: center;
 }
@@ -26,7 +46,44 @@ header {
 }
 form {
   display: grid;
-  width: 20rem;
-  text-align: center;
+  width: 30rem;
   margin: auto;
+}
+label {
+  width: 15rem;
+}
+input {
+  margin: 0.5rem;
+}
+.cover {
+  width: 30rem;
+  height: 10rem;
+  background-position: center;
+  background-size: cover;
+  margin: auto;
+}
+input, select, option {
+  background-color: #d7d7d7;
+  padding: 0.5rem;
+  width: 30rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-family: "Karla", sans-serif;
+  transition: 0.5s;
+  margin-bottom: 2rem;
+  /* appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none; */
+}
+select {
+  margin-left: 0.5rem;
+  width: 31rem;
+}
+input:hover, select:hover, input:active, select:active {
+  box-shadow: 0 0 0.5rem #f4ce14;
+}
+.chakra-form__error-message {
+  margin-bottom: 1rem;
+  margin-top: -2rem;
+  color: red;
 }
