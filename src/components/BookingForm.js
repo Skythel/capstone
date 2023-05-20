@@ -1,6 +1,5 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { useFormik } from "formik";
-import useSubmit from "../hooks/useSubmit.js";
 // import {useAlertContext} from "../context/alertContext.js";
 import {
   Box,
@@ -15,27 +14,19 @@ import {
 import * as Yup from 'yup';
 
 const BookingForm = (props) => {
-    const {isLoading, response, submit} = useSubmit();
-    // const { onOpen } = useAlertContext();
     const formik = useFormik({
-        initialValues: {date: "", time: "17:00", guests: "", occasion: ""},
+        validateOnMount: true,
+        initialValues: {date: "", time: props.availableTimes[0], guests: "4", occasion: ""},
         onSubmit: (values) => {
           props.submitForm(values);
         },
         validationSchema: Yup.object({
           date: Yup.date("Invalid date").required("Required"),
-          time: Yup.string().required("Required"),
-          guests: Yup.number("Please enter a number").required("Required"),
-          occasion: Yup.string().required("Required")
+          time: Yup.string().matches(/[0-9]{2}:[0-9]0/, "Invalid time").required("Required"),
+          guests: Yup.number("Please enter a number").min(1, "You need at least 1 guest to reserve a table").required("Required"),
+          occasion: Yup.string().matches(/Birthday|Anniversary/, "Invalid occasion").required("Required"),
         }),
     });
-    useEffect(() => {
-    if (response) {
-    //   onOpen(response.type, response.message);
-        if (response.type === "success")
-        formik.resetForm();
-    }
-    }, [response]);
 
     return (
         <>
@@ -67,12 +58,14 @@ const BookingForm = (props) => {
                 <FormControl isInvalid={formik.errors.occasion && formik.touched.occasion}>
                     <FormLabel htmlFor="occasion">Occasion</FormLabel>
                     <Select id="occasion" name="occasion" {...formik.getFieldProps("occasion")}>
+                        <option>Choose one</option>
                         <option>Birthday</option>
                         <option>Anniversary</option>
                     </Select>
                     <FormErrorMessage>{formik.errors.occasion}</FormErrorMessage>
                 </FormControl>
-                <Button type="submit">Make Your Reservation</Button>
+                <Button aria-label="On Click" type="submit" disabled={(formik.errors.length > 0)}>Make Your Reservation</Button>
+                {console.log(formik.isValid)}
             </form>
         </Box>
         </>

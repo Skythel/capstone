@@ -25,3 +25,14 @@ test('updateTimes returns the same value provided in the state', () => {
       expect(time).toEqual(arrayOfTimeOptions[i].innerHTML);
     }) 
 })
+
+// test('Reject invalid number of guests', () => {
+//     render(<Main />, {initialRoutes: ["/reservations"]});
+//     const element = screen.getByLabelText("Number of guests");
+//     fireEvent.change(element, {target: {value: 0}});
+//     const submitButton = screen.getByRole("button");
+//     fireEvent.click(submitButton);
+//     const msg = screen.getByText("You need at least 1 guest to reserve a table");
+//     expect(msg).toBeInTheDocument();
+// })
+
