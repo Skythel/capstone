@@ -20,7 +20,7 @@ const BookingForm = (props) => {
     const formik = useFormik({
         initialValues: {date: "", time: "17:00", guests: "", occasion: ""},
         onSubmit: (values) => {
-          submit("", values);
+          props.submitForm(values);
         },
         validationSchema: Yup.object({
           date: Yup.date("Invalid date").required("Required"),
